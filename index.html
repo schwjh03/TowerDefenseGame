@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Erdspire Defense</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="app">
+      <section id="startScreen" class="start-screen">
+        <div class="ember-field" aria-hidden="true"></div>
+        <div class="title-wrap">
+          <p class="kicker">One map prototype</p>
+          <h1>Erdspire Defense</h1>
+          <button id="playButton" class="play-button" type="button">Play Game</button>
+        </div>
+      </section>
+
+      <section id="hubScreen" class="hub-screen hidden">
+        <div class="hub-sky" aria-hidden="true"></div>
+        <header class="hub-header">
+          <div>
+            <span class="label">Ashen Hold</span>
+            <h2>Between-Wars Camp</h2>
+          </div>
+          <div class="hub-currency">
+            <span class="label">Relics</span>
+            <strong id="relics">3</strong>
+          </div>
+        </header>
+
+        <button id="shrineNode" class="hub-node shrine-node" type="button" data-hub="shrine">
+          <span class="node-art image-art" aria-hidden="true">
+            <img src="assets/broken-shrine.png" alt="" />
+          </span>
+          <strong>Broken Shrine</strong>
+          <small>Permanent camp upgrades</small>
+        </button>
+
+        <button id="fountainNode" class="hub-node fountain-node" type="button" data-hub="fountain">
+          <span class="node-art image-art" aria-hidden="true">
+            <img src="assets/blood-fountain.png" alt="" />
+          </span>
+          <strong>Blood Fountain</strong>
+          <small>Future challenge modes</small>
+        </button>
+
+        <button id="armoryNode" class="hub-node armory-node" type="button" data-hub="armory">
+          <span class="node-art image-art" aria-hidden="true">
+            <img src="assets/ruined-armory.png" alt="" />
+          </span>
+          <strong>Ruined Armory</strong>
+          <small>Future tower unlocks</small>
+        </button>
+
+        <button id="mapGateNode" class="hub-node gate-node" type="button" data-hub="gate">
+          <span class="node-art image-art" aria-hidden="true">
+            <img src="assets/map-gate.png" alt="" />
+          </span>
+          <strong>Map Gate</strong>
+          <small>Enter the first route</small>
+        </button>
+
+        <aside class="hub-panel">
+          <span class="label" id="hubPanelLabel">Selected</span>
+          <h3 id="hubPanelTitle">Broken Shrine</h3>
+          <p id="hubPanelText">Repair the shrine to strengthen your defenses before entering the map.</p>
+          <div id="shrineUpgradeBox" class="shrine-upgrade-box">
+            <div>
+              <span>Sanctuary Level</span>
+              <strong id="shrineLevel">1</strong>
+            </div>
+            <div>
+              <span>Starting Gold Bonus</span>
+              <strong id="startingGoldBonus">+0</strong>
+            </div>
+            <button id="repairShrineButton" class="upgrade-button" type="button">Repair Shrine 2 Relics</button>
+          </div>
+          <button id="comingSoonButton" class="upgrade-button coming-soon-button hidden" type="button" disabled>Coming Soon</button>
+          <button id="beginMapButton" class="play-button begin-map-button" type="button">Begin Map</button>
+        </aside>
+      </section>
+
+      <section id="gameScreen" class="game-screen hidden">
+        <div class="hud">
+          <div>
+            <span class="label">Lives</span>
+            <strong id="lives">20</strong>
+          </div>
+          <div>
+            <span class="label">Gold</span>
+            <strong id="gold">120</strong>
+          </div>
+          <div>
+            <span class="label">Wave</span>
+            <strong id="wave">1</strong>
+          </div>
+          <div class="speed-control" aria-label="Game speed">
+            <button class="speed-button selected" type="button" data-speed="1">1x</button>
+            <button class="speed-button" type="button" data-speed="2">2x</button>
+            <button class="speed-button" type="button" data-speed="3">3x</button>
+          </div>
+          <button id="nextWave" class="hud-button" type="button">Start Wave</button>
+        </div>
+
+        <canvas id="gameCanvas" width="1280" height="720" aria-label="Tower defense game map"></canvas>
+
+        <aside class="tower-panel" aria-label="Tower controls">
+          <button class="tower-card selected" type="button" data-tower="aspirant">
+            <span class="tower-icon aspirant"></span>
+            <span>
+              <strong>Aspirant</strong>
+              <small>Choose Knight, Watcher, or Pyre</small>
+            </span>
+            <b>65g</b>
+          </button>
+          <div id="upgradePanel" class="upgrade-panel hidden">
+            <div>
+              <span class="label">Selected</span>
+              <strong id="selectedTowerName">Aspirant</strong>
+            </div>
+            <div class="upgrade-stats">
+              <span id="selectedTowerLevel">K0 W0 P0</span>
+              <span id="selectedTowerDamage">Damage 16</span>
+              <span id="selectedTowerRange">Range 118</span>
+            </div>
+            <div class="path-upgrades">
+              <button class="path-button" type="button" data-path="knight">Knight</button>
+              <button class="path-button" type="button" data-path="watcher">Watcher</button>
+              <button class="path-button" type="button" data-path="pyre">Pyre</button>
+            </div>
+          </div>
+          <p id="message" class="message">Drag a tower onto open ground to place it.</p>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="game.js"></script>
+  </body>
+</html>
