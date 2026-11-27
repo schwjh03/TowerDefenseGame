@@ -515,6 +515,7 @@ function drawGate() {
 export function draw() {
   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
   drawBackground();
+  drawRoadScenery();
   drawPath();
   drawGate();
   drawTowers();
